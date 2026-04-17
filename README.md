@@ -148,7 +148,7 @@ Apache License 2.0. See LICENSE.
 
 ## Credits
 
-Built by the TeachMate team for the **Gemma 4 Good Hackathon** hosted by
+Built by Sayem Islam for the **Gemma 4 Good Hackathon** hosted by
 Google DeepMind on Kaggle. Powered by **Gemma 4**, served locally via
 **[Ollama](https://ollama.com)**.
 
