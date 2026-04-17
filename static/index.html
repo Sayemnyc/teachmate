@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="description" content="TeachMate — an offline AI tutor that runs on your own laptop. No internet required." />
+  <meta name="theme-color" content="#4a90e2" />
+  <title>TeachMate — Your Offline AI Tutor</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>📘</text></svg>" />
+</head>
+<body>
+  <!--
+    Top bar: brand + subject picker + offline status badge.
+    The status badge is the single most important narrative element —
+    it tells students and teachers "this works without internet."
+  -->
+  <header class="topbar">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+        <!-- Book -->
+        <path d="M8 10 C8 8, 10 7, 12 7 L22 7 C23 7, 24 8, 24 9 L24 40 C24 41, 23 42, 22 42 L12 42 C10 42, 8 41, 8 39 Z" fill="#4a90e2"/>
+        <path d="M40 10 C40 8, 38 7, 36 7 L26 7 C25 7, 24 8, 24 9 L24 40 C24 41, 25 42, 26 42 L36 42 C38 42, 40 41, 40 39 Z" fill="#6aa8ea"/>
+        <!-- Lightbulb -->
+        <circle cx="24" cy="18" r="7" fill="#ffc857"/>
+        <rect x="21" y="24" width="6" height="3" rx="1" fill="#d99f2e"/>
+        <path d="M20 15 Q24 11 28 15" stroke="#fff6d6" stroke-width="1.5" fill="none"/>
+      </svg>
+      <div class="brand-text">
+        <h1>TeachMate</h1>
+        <p class="tagline">Your offline AI tutor</p>
+      </div>
+    </div>
+
+    <div class="controls">
+      <label class="subject-picker">
+        <span class="sr-only">Subject</span>
+        <select id="subject">
+          <option value="Math">📐 Math</option>
+          <option value="Science">🔬 Science</option>
+          <option value="History">🏛️ History</option>
+          <option value="English">📖 English</option>
+          <option value="Geography">🌍 Geography</option>
+        </select>
+      </label>
+
+      <div id="status" class="status status--checking" title="Checking Ollama connection…">
+        <span class="status-dot"></span>
+        <span class="status-text">Checking…</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- The chat log. Empty-state greeting is rendered by app.js so it can
+       adapt to the selected subject. -->
+  <main class="chat" id="messages" role="log" aria-live="polite" aria-label="Tutor conversation"></main>
+
+  <!-- Action bar — meta-actions that operate on the whole session. -->
+  <div class="actions">
+    <button class="action-btn" id="btn-explain" type="button" title="Re-explain the last answer in simpler words">
+      🧸 Explain Like I'm 10
+    </button>
+    <button class="action-btn" id="btn-summarize" type="button" title="Summarize what you've learned this session">
+      📝 Summarize My Session
+    </button>
+    <button class="action-btn action-btn--ghost" id="btn-new" type="button" title="Start a fresh conversation">
+      ✨ New Chat
+    </button>
+  </div>
+
+  <!-- Composer: textarea + image picker + send button. -->
+  <form class="composer" id="composer" autocomplete="off">
+    <button type="button" class="icon-btn" id="btn-upload" title="Upload a photo of your homework" aria-label="Upload image">
+      📎
+    </button>
+    <input type="file" id="file-input" accept="image/*" hidden />
+
+    <textarea
+      id="input"
+      rows="1"
+      placeholder="Ask anything… (Shift+Enter for a new line)"
+      aria-label="Your question"
+    ></textarea>
+
+    <button type="submit" class="send-btn" id="btn-send" aria-label="Send">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+        <path d="M3 20l18-8L3 4v6l12 2-12 2z" fill="currentColor"/>
+      </svg>
+    </button>
+  </form>
+
+  <!-- Preview strip for an image attached to the next message. -->
+  <div class="attachment-preview" id="attachment-preview" hidden>
+    <img id="attachment-thumb" alt="Attached homework" />
+    <span id="attachment-name">Image attached</span>
+    <button type="button" id="attachment-remove" aria-label="Remove attachment">×</button>
+  </div>
+
+  <footer class="footer">
+    Powered by <strong>Gemma 4</strong> via <strong>Ollama</strong> · 100% on-device · No data leaves your computer
+  </footer>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
