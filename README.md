@@ -17,6 +17,20 @@ Built for the **[Gemma 4 Good Hackathon](https://www.kaggle.com/competitions/gem
 >
 > 📄 License: Apache 2.0 (see LICENSE)
 
+## 🚀 Quick Start
+
+Three terminal commands after cloning:
+
+```bash
+./install.sh          # installs Python deps and checks for Ollama
+ollama pull gemma4:e4b # one-time 9.6GB model download
+uvicorn main:app       # starts the app
+```
+
+Then open http://localhost:8000. The status badge turns green when it's ready.
+
+**First time?** You need [Ollama](https://ollama.com/download) and Python 3.10+ installed first. See Prerequisites below for details.
+
 ---
 
 ## Features
