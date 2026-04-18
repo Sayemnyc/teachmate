@@ -19,17 +19,25 @@ Built for the **[Gemma 4 Good Hackathon](https://www.kaggle.com/competitions/gem
 
 ## 🚀 Quick Start
 
-Three terminal commands after cloning:
+**One-line install (macOS / Linux):**
 
 ```bash
-./install.sh          # installs Python deps and checks for Ollama
-ollama pull gemma4:e4b # one-time 9.6GB model download
-uvicorn main:app       # starts the app
+curl -fsSL https://raw.githubusercontent.com/Sayemnyc/teachmate/main/bootstrap.sh | bash
+```
+
+This installs Ollama, pulls the 9.6 GB Gemma 4 model, clones the repo into `~/teachmate`, and installs Python dependencies. Python 3.10+ is the only thing you need in advance.
+
+When it finishes, run:
+
+```bash
+cd ~/teachmate && uvicorn main:app --reload
 ```
 
 Then open http://localhost:8000. The status badge turns green when it's ready.
 
-**First time?** You need [Ollama](https://ollama.com/download) and Python 3.10+ installed first. See Prerequisites below for details.
+> 🔒 **Want to review the script first?** Run `curl -fsSL https://raw.githubusercontent.com/Sayemnyc/teachmate/main/bootstrap.sh | less` to read it, or open [bootstrap.sh](bootstrap.sh) on GitHub.
+
+**Manual install (Windows, or if you'd rather do it yourself):** see Prerequisites below.
 
 ---
 
