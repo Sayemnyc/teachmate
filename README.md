@@ -11,7 +11,7 @@ anywhere a student wants a private, always-available study partner.
 Built for the **[Gemma 4 Good Hackathon](https://www.kaggle.com/competitions/gemma-4-good-hackathon)**
 (Future of Education track).
 
-> 🎥 Demo video: [link goes here after recording]
+> 🎥 Demo video: https://youtu.be/7CgSdSR074U
 >
 > 📝 Writeup: WRITEUP.md
 >
